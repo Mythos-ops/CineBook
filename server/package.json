@@ -1,0 +1,22 @@
+{
+  "name": "cinebook-server",
+  "version": "1.0.0",
+  "description": "CineBook movie booking reservation backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js",
+    "seed": "node seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "node-cron": "^4.2.1"
+  }
+}

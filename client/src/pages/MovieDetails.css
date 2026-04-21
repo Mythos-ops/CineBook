@@ -1,0 +1,191 @@
+.details-page {
+  padding-bottom: 4rem;
+}
+
+.details-hero {
+  position: relative;
+  min-height: 50vh;
+  padding-top: 5rem;
+  margin-top: -80px;
+}
+
+.hero-overlay-heavy {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to right, rgba(5,5,5,1) 0%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.4) 100%);
+}
+
+.hero-content-split {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.poster-col {
+  flex-shrink: 0;
+}
+
+.poster-img {
+  width: 250px;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  border: 1px solid var(--glass-border);
+}
+
+.info-col {
+  flex-grow: 1;
+}
+
+.details-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.meta-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-badge {
+  border: 1px solid var(--text-muted);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-md);
+}
+
+.synopsis {
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.cast-row {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.cast-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.cast-member img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--glass-border);
+}
+
+.actor-name {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Showtimes */
+.showtimes-section {
+  margin-top: 3rem;
+}
+
+.date-picker {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.date-pill {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-round);
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.date-pill.active {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--primary);
+  border-color: var(--primary-dark);
+}
+
+.theaters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.theater-card {
+  padding: 2rem;
+}
+
+.theater-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.times-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.time-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+  background: var(--primary);
+  color: var(--bg-deep);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.time-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.time-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.time-price {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.meta-score {
+  color: var(--primary);
+  font-weight: 600;
+}

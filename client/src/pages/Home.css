@@ -1,0 +1,273 @@
+.home-page {
+  position: relative;
+  background-color: var(--bg-deep); /* Very dark background to anchor the bottom content */
+  width: 100%;
+}
+
+/* 
+  1. The Tracker
+  We make this taller than the viewport (e.g. 200vh) to give the user physical 
+  scrolling space. While scrolling within this container, the 'sticky' child stays visible.
+*/
+.scroll-tracker {
+  position: relative;
+  height: 180vh; /* Configured to give exactly enough scroll length to resolve the animation nicely */
+  width: 100%;
+}
+
+/* 
+  2. The Sticky Hero Container
+  This sticks to the top of the viewport. It will be 100vh tall and 100vw wide.
+  The actual visual transformation (scale, radius) is handled by Framer Motion inline styles.
+*/
+.sticky-hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Start flat, framer rounds it as scrolling down */
+  transform-origin: center center; 
+  will-change: transform, border-radius;
+  display: flex;
+  align-items: flex-end; /* Align content toward the bottom */
+}
+
+/* Hero Background and Gradient */
+.hero-bg {
+  position: absolute;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  background-size: cover;
+  background-position: center 20%; /* Push up slightly */
+  z-index: 1;
+}
+
+.hero-overlay-cinematic {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.7) 30%, rgba(5,5,5,0.1) 100%);
+  z-index: 2;
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-bottom: 8rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 5vw; /* highly responsive */
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+@media (max-width: 768px) {
+  .hero-title { font-size: 3rem; }
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.hero-meta .badge {
+  border: 1px solid var(--text-muted);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+}
+
+.hero-description {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 
+  3. The Content Layers
+  Because the tracker is 180vh long, normal document flow puts this container 
+  all the way at the bottom. We pull it up so it physically overlaps the gap, 
+  "wrapping" over the bottom of the sticky hero area as it shrinks.
+*/
+.content-layers {
+  position: relative;
+  /* Pull it up by 60vh. 180vh tracker - 100vh hero sticky length = 80vh of dead space. 
+     We overlap that space so the content pushes over the hero smoothly. */
+  margin-top: -60vh; 
+  z-index: 20; 
+  padding-bottom: 6rem;
+  background: transparent; /* allow the hero to show behind */
+}
+
+/* Typography Overrides */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+/* Rails */
+.movie-rail {
+  margin-bottom: 5rem;
+}
+
+.rail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+}
+
+.nav-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrow {
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.arrow:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #000;
+}
+
+.scroll-rail {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  /* Snap logic for carousel feeling */
+  scroll-snap-type: x mandatory;
+}
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.rail-item {
+  scroll-snap-align: start;
+}
+
+/* Cards */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px; /* Fixed width for horizontal layout */
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.movie-card:hover .card-img-wrapper img {
+  transform: scale(1.08); /* Cinematic zoom * /
+}
+
+.rating-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.card-content {
+  padding: 0 0.5rem;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+/* Upcoming Visual Difference */
+.upcoming-card .card-img-wrapper {
+  opacity: 0.6;
+}
+
+.upcoming-card:hover .card-img-wrapper {
+  opacity: 1; /* Highlight when focused */
+}
+
+.notify-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+}
