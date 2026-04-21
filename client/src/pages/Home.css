@@ -211,7 +211,7 @@
 }
 
 .movie-card:hover .card-img-wrapper img {
-  transform: scale(1.08); /* Cinematic zoom * /
+  transform: scale(1.08); /* Cinematic zoom */
 }
 
 .rating-badge {
