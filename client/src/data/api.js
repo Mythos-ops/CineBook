@@ -1,5 +1,5 @@
 const API_BASE = import.meta.env.PROD
-  ? 'https://cinebook-pf6o.onrender.com'
+  ? 'https://cinebook-pf6o.onrender.com/api'
   : 'http://localhost:5000/api';
 
 export const api = {
