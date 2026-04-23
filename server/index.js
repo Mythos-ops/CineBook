@@ -7,6 +7,7 @@ import movieRoutes from './routes/movies.js';
 import theaterRoutes from './routes/theaters.js';
 import showtimeRoutes from './routes/showtimes.js';
 import bookingRoutes from './routes/bookings.js';
+import { initRedis } from './lib/redis.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ mongoose.connect(process.env.MONGO_URI, {
 })
   .then(() => {
     console.log('✅ MongoDB connected');
+    initRedis();
     app.listen(PORT, () => {
       console.log(`🚀 CineBook server running on http://localhost:${PORT}`);
     });
