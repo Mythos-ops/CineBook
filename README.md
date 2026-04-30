@@ -1,5 +1,7 @@
 # CineBook - Movie Booking Reservation System
 
+🌍 **Live Demo:** [https://cinebook-c.netlify.app/](https://cinebook-c.netlify.app/)
+
 CineBook is a full-stack movie booking and reservation system built with a modern web architecture. It allows users to browse movies, find theaters, view showtimes, and book seats.
 
 ## 🚀 Tech Stack
